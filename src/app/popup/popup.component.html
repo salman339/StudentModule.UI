@@ -1,0 +1,101 @@
+<div class="container">
+  <div class="row pt-3">
+    <div class="col-12">
+      <ng-template #content let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Add Student</h4>
+          <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="studentForm" (ngSubmit)="saveStudent()" class="student-form">
+            <div class="mb-3">
+              <label for="id">ID</label>
+              <div class="input-group">
+                <input
+                  id="id"
+                  class="form-control"
+                  placeholder="ID"
+                  name="id"
+                  formControlName="id"
+                type="hidden"
+                />
+
+              </div>
+              </div>
+              <div class="mb-3">
+                <label for="firstName">First Name</label>
+                <div class="input-group">
+                  <input
+                    id="firstName"
+                    class="form-control"
+                    placeholder="Enter First Name"
+                    name="firstName"
+                    formControlName="firstName"
+                  />
+
+                </div>
+                <span class="error-message" *ngIf="firstName && studentForm.invalid && firstName.touched && firstName.invalid">Please enter first name</span>
+              </div>
+
+              <div class="mb-3">
+                <label for="lastName">Last Name</label>
+                <div class="input-group">
+                  <input
+                    id="lastName"
+                    class="form-control"
+                    placeholder="Enter Last Name"
+                    name="lastName"
+                    formControlName="lastName"
+                  />
+
+                </div>
+                <span class="error-message" *ngIf="lastName && lastName.touched && lastName.invalid">Please enter last name</span>
+              </div>
+
+              <div class="mb-3">
+                <label for="email">Email</label>
+                <div class="input-group">
+                  <input
+                    id="email"
+                    class="form-control"
+                    placeholder="Enter Email"
+                    name="email"
+                    formControlName="email"
+                  />
+
+                </div>
+                <span class="error-message" *ngIf="email && email.touched && email.invalid">Please enter valid email</span>
+              </div>
+
+              <div class="mb-3">
+                <label for="dateOfBirth">Date Of Birth</label>
+                <div class="input-group">
+                  <input
+                  type="date"
+                    class="form-control"
+                    formControlName="dateOfBirth"
+                    required
+                  />
+                </div>
+                <span class="error-message" *ngIf="">Please enter date of birth</span>
+              </div>
+            <div class="modal-footer">
+              <!-- <button type="submit" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button> -->
+              <button type="submit" class="btn btn-outline-dark">Save</button>
+            </div>
+
+            <span *ngIf="this.studentForm.invalid" [ngClass]="errorClass">{{errorMessage}}</span>
+          </form>
+        </div>
+
+      </ng-template>
+
+      <button class="btn btn-primary" #popupbtn id="popupbtn" (click)="open()">Add Student</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+

@@ -1,0 +1,70 @@
+
+<section class="header-sect py-3 bg-dark">
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="header-head">
+        Students Listing Module
+      </h3>
+    </div>
+  </div>
+</div>
+
+</section>
+
+<div class="container">
+  <div class="row py-5">
+    <div class="col-12">
+      <h3 class="students-head text-center">
+        Welcome to All Students List
+      </h3>
+    </div>
+    <div class="col-6 pl-0 pt-2">
+      <app-popup></app-popup>
+    </div>
+    <div class="col-6 my-4 search-field-col ">
+      <input type="text" [(ngModel)] ="filterString" (ngModelChange)="searchChange($event)" placeholder="Search......" />
+    </div>
+
+
+    <div class="row mt-4">
+      <table class="table table-bordered">
+        <thead>
+          <th>ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Date of Birth</th>
+          <th>Action</th>
+        </thead>
+          <tr *ngFor="let student of allStudentList | filterPipe:filterString | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize ">
+            <td>{{student.id}}</td>
+            <td>{{student.firstName}}</td>
+            <td>{{student.lastName}}</td>
+            <td>{{student.email}}</td>
+            <td>{{student.dateOfBirth }}</td>
+            <td>
+              <a (click)="editStudent(student.id)" class="btn"><fa-icon [icon]="editIcon" [styles]="{'color': 'orange'}"></fa-icon></a>
+              <a (click)="deleteStudent(student.id)" class="btn"><fa-icon [icon]="deleteIcon" [styles]="{'color': 'red'}"></fa-icon></a>
+            </td>
+          </tr>
+        <tbody>
+
+        </tbody>
+
+
+      </table>
+
+      <div class="row pt-4">
+        <div class="col-12 ">
+
+          <ngb-pagination
+          [(page)]="page"
+          [pageSize]="pageSize"
+          [collectionSize]="collectionLength"
+        ></ngb-pagination>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

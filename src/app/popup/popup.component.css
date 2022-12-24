@@ -1,0 +1,20 @@
+.student-form label{
+  font-size: 16px;
+  margin-bottom: 5px;
+
+}
+.student-form input{
+  font-size: 16px;
+}
+.error-message{
+  color: red;
+  font-size: 13px;
+  margin-top: 3px;
+}
+.modal-footer{
+border-top: 0;
+justify-content: start;
+}
+#popupbtn{
+  margin-left: -28px!important;
+}

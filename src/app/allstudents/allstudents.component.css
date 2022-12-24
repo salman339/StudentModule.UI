@@ -1,0 +1,14 @@
+.students-head {
+  font-size: 22px;
+}
+.search-field-col input{
+  padding: 5px 7px;
+}
+.search-field-col{
+  text-align: right;
+  padding-right: 40px;
+}
+.header-head{
+  color: #fff;
+  font-size: 20px;
+}
